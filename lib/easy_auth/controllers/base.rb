@@ -19,7 +19,6 @@ module EasyAuth
         def current_user; nil; end
 
         def authorize_user!
-          binding.pry
           raise CurrentUserNotDefinedError unless current_user.present?
 
           if !can?(current_user, self.auth_group_id, self.controller_path, self.action_name)
