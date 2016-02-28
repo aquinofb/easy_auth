@@ -22,7 +22,7 @@ module EasyAuth
           raise CurrentUserNotDefinedError unless current_user.present?
 
           if !can?(current_user, self.auth_group_id, self.controller_path, self.action_name)
-            raise Heimdall::UnauthorizedError
+            raise EasyAuth::UnauthorizedError
           end
         end
 
