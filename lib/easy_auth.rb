@@ -8,6 +8,13 @@ module EasyAuth
   autoload :UnauthorizedError, 'easy_auth/exceptions'
   autoload :LoggedUserMethodNotDefinedError, 'easy_auth/exceptions'
 
+  mattr_accessor :config
+  @@config = EasyAuth::Config.new
+
+  def self.config &block
+    yield(self.config) if block_given?
+  end
+
   ActiveSupport.on_load(:action_controller) do
     self.class_eval do
       include EasyAuth::Controllers::Base
