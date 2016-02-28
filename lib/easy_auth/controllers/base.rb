@@ -19,7 +19,10 @@ module EasyAuth
         def check_authorization!
           raise EasyAuth::LoggedUserMethodNotDefinedError unless current_user.present?
 
-          if !can?(current_user.id, self.authorization_group_id, self.controller_path, self.action_name)
+          authorizable_id = self.send(EasyAuth._config.logged_user_method).id
+          group_id = self.send(EasyAuth._config.group_id_method)
+
+          if !can?(authorizable_id, group_id, self.controller_path, self.action_name)
             raise EasyAuth::UnauthorizedError
           end
         end

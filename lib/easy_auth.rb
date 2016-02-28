@@ -5,11 +5,13 @@ module EasyAuth
     autoload :Base, 'easy_auth/controllers/base'
   end
 
+  autoload :Config, 'easy_auth/config'
+
   autoload :UnauthorizedError, 'easy_auth/exceptions'
   autoload :LoggedUserMethodNotDefinedError, 'easy_auth/exceptions'
 
-  mattr_accessor :config
-  @@config = EasyAuth::Config.new
+  mattr_accessor :_config
+  @@_config = EasyAuth::Config
 
   def self.config &block
     yield(self.config) if block_given?
