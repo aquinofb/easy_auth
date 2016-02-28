@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224004802) do
+ActiveRecord::Schema.define(version: 20160228003901) do
 
   create_table "easy_auth_authorizations", force: :cascade do |t|
     t.integer  "role_id"
@@ -46,6 +46,25 @@ ActiveRecord::Schema.define(version: 20160224004802) do
 
   create_table "easy_auth_roles", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "produtos", force: :cascade do |t|
+    t.string   "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vendedors", force: :cascade do |t|
+    t.string   "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

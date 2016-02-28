@@ -2,7 +2,7 @@ module EasyAuth
   module Cache
     class Feature
       def self.key_cache authorizable_id
-        "#{Rails.application.class.parent_name}_heimdall_allowed_features_#{authorizable_id}"
+        "#{Rails.application.class.parent_name}_easy_auth_allowed_features_#{authorizable_id}"
       end
 
       def self.for_authorization authorizable_id, group_id
@@ -22,7 +22,7 @@ module EasyAuth
 
       def self.hash_from_database authorizable_id, group_id
         features = Heimdall::Feature.by_group(group_id).by_authorizable(authorizable_id)
-        features.map {|feature| {group_id: group_id, namespace: feature.namespace} }
+        features.map {|feature| {group_id: group_id, namespace: feature.namespace, action: feature.action} }
       end
     end
   end
