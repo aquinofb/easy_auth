@@ -6,7 +6,7 @@ module EasyAuth
   end
 
   autoload :UnauthorizedError, 'easy_auth/exceptions'
-  autoload :CurrentUserNotDefinedError, 'easy_auth/exceptions'
+  autoload :LoggedUserMethodNotDefinedError, 'easy_auth/exceptions'
 
   ActiveSupport.on_load(:action_controller) do
     self.class_eval do
