@@ -13,12 +13,12 @@ module EasyAuth
       end
 
       protected
-        def authorization_group_id; nil; end
         def current_user; nil; end
+        def authorization_group_id; nil; end
 
-        def authorize_user!
+        def check_authorization!
           raise EasyAuth::LoggedUserMethodNotDefinedError unless current_user.present?
-          
+
           if !can?(current_user.id, self.authorization_group_id, self.controller_path, self.action_name)
             raise EasyAuth::UnauthorizedError
           end
