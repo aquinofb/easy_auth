@@ -19,8 +19,8 @@ module EasyAuth
       end
 
       def self.exists? authorizable_id, group_id
-        Rails.cache.exist?(self.key_cache(authorizable_id))
-          && self.by_group(authorizable_id, group_id).any?
+        Rails.cache.exist?(self.key_cache(authorizable_id)) &&
+                self.by_group(authorizable_id, group_id).any?
       end
 
       def self.append_new_features authorizable_id, group_id
