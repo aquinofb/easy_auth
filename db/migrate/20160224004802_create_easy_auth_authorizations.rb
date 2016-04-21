@@ -1,8 +1,8 @@
 class CreateEasyAuthAuthorizations < ActiveRecord::Migration
   def change
     create_table :easy_auth_authorizations do |t|
-      t.references :role, foreign_key: true
-      t.references :group, foreign_key: true
+      t.references :role
+      t.references :group
       t.references :authorizable, polymorphic: true
 
       t.timestamps null: false
